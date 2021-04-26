@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from .base_dataset import BaseADDataset
 from .base_net import BaseNet
+import torch
 
 
 class BaseTrainer(ABC):
@@ -15,7 +16,7 @@ class BaseTrainer(ABC):
         self.lr_milestones = lr_milestones
         self.batch_size = batch_size
         self.weight_decay = weight_decay
-        self.device = device
+        self.device = torch.device(device)
         self.n_jobs_dataloader = n_jobs_dataloader
 
     @abstractmethod
