@@ -37,13 +37,13 @@ class MNIST_Dataset(TorchvisionDataset):
 
         target_transform = transforms.Lambda(lambda x: int(x in self.outlier_classes))
 
-        train_set = MyMNIST(root='./', train=True, download=True,
+        train_set = MyMNIST(root='./', train=True, download=False,
                             transform=transform, target_transform=target_transform)
         # Subset train_set to normal class
         train_idx_normal = get_target_label_idx(train_set.train_labels.clone().data.cpu().numpy(), self.normal_classes)
         self.train_set = Subset(train_set, train_idx_normal)
 
-        self.test_set = MyMNIST(root='./', train=False, download=True,
+        self.test_set = MyMNIST(root='./', train=False, download=False,
                                 transform=transform, target_transform=target_transform)
 
 
@@ -51,8 +51,7 @@ class MyMNIST(MNIST):
     """Torchvision MNIST class with patch of __getitem__ method to also return the index of a data sample."""
 
     def __init__(self, *args, **kwargs):
-        # super(MyMNIST, self).__init__(*args, **kwargs)
-        pass
+        super(MyMNIST, self).__init__(*args, **kwargs)
 
     def __getitem__(self, index):
         """Override the original method of the MNIST class.
