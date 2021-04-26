@@ -21,6 +21,7 @@ class AETrainer(BaseTrainer):
         logger = logging.getLogger()
 
         # Set device for network
+        print(self.device)
         ae_net = ae_net.to(self.device)
 
         # Get train data loader
