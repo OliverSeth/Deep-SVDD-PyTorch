@@ -51,7 +51,8 @@ class MyMNIST(MNIST):
     """Torchvision MNIST class with patch of __getitem__ method to also return the index of a data sample."""
 
     def __init__(self, *args, **kwargs):
-        super(MyMNIST, self).__init__(*args, **kwargs)
+        # super(MyMNIST, self).__init__(*args, **kwargs)
+        pass
 
     def __getitem__(self, index):
         """Override the original method of the MNIST class.
