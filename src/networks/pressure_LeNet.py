@@ -15,7 +15,7 @@ class PRESSURE_LeNET(BaseNet):
         self.bn1 = nn.BatchNorm1d(10, eps=1e-04, affine=False)
         self.conv2 = nn.Conv1d(10, 20, 5, bias=False, padding=2)
         self.bn2 = nn.BatchNorm1d(20, eps=1e-04, affine=False)
-        self.fc1 = nn.Linear(100, self.rep_dim, bias=False)
+        self.fc1 = nn.Linear(20 * 100, self.rep_dim, bias=False)
 
     def forward(self, x):
         x = self.conv1(x)
