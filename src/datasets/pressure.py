@@ -20,7 +20,7 @@ class PRESSURE_Dataset(TorchvisionDataset):
 
 class PRESSURE(Dataset):
     def __init__(self, data_path, transform=None, target_transform=None):
-        self.data = pd.read_csv(data_path)
+        self.data = pd.read_csv(data_path).values.tolist()
         self.transform = transform
         self.target_transform = target_transform
 
