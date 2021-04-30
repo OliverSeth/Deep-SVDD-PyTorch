@@ -16,7 +16,8 @@ class PRESSURE_Dataset(TorchvisionDataset):
         self.outlier_classes = tuple([1 - normal_class])
         data = pd.read_csv(data_path)
         train_data = data.loc[data['target'] == normal_class].values.tolist()
-        self.train_set, test_data = random_split(train_data, [int(len(data) * 0.7), len(data) - int(len(data) * 0.7)])
+        self.train_set, test_data = random_split(train_data, [int(len(train_data) * 0.7),
+                                                              len(train_data) - int(len(train_data) * 0.7)])
         self.test_set = data.loc[data['target'] != normal_class].values.tolist()
         self.test_set.extend(test_data)
 
