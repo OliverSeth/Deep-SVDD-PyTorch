@@ -73,6 +73,7 @@ class DeepSVDDTrainer(BaseTrainer):
             epoch_start_time = time.time()
             for data in train_loader:
                 inputs, _, _ = data
+                inputs = inputs.resize(20, 1, 400)
                 inputs = inputs.to(self.device)
 
                 # Zero the network parameter gradients
