@@ -11,9 +11,9 @@ class PRESSURE_LeNET(BaseNet):
         self.rep_dim = 32
         self.pool = nn.MaxPool1d(2)
 
-        self.conv1 = nn.Conv1d(1, 10, 5, bias=False, padding=2)
+        self.conv1 = nn.Conv1d(in_channels=1, out_channels=10, kernel_size=5, bias=False, padding=2)
         self.bn1 = nn.BatchNorm1d(10, eps=1e-04, affine=False)
-        self.conv2 = nn.Conv1d(10, 20, 5, bias=False, padding=2)
+        self.conv2 = nn.Conv1d(in_channels=10, out_channels=20, kernel_size=5, bias=False, padding=2)
         self.bn2 = nn.BatchNorm1d(20, eps=1e-04, affine=False)
         self.fc1 = nn.Linear(20 * 100, self.rep_dim, bias=False)
 
