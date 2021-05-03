@@ -126,6 +126,7 @@ class DeepSVDDTrainer(BaseTrainer):
         with torch.no_grad():
             for data in test_loader:
                 inputs, labels, idx = data
+                inputs = inputs.resize(20, 1, 400)
                 inputs = inputs.to(self.device)
                 outputs = net(inputs)
                 dist = torch.sum((outputs - self.c) ** 2, dim=1)
