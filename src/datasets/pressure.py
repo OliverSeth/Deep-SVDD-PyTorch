@@ -14,17 +14,13 @@ class PRESSURE_Dataset(TorchvisionDataset):
         self.target_transform = target_transform
         self.normal_classes = tuple([normal_class])
         self.outlier_classes = tuple([1 - normal_class])
-        data = pd.read_csv(data_path)
-        train_data = data.loc[data['target'] == normal_class].values.tolist()
-        self.train_set, test_data = random_split(train_data, [int(len(train_data) * 0.7),
-                                                              len(train_data) - int(len(train_data) * 0.7)])
-        self.test_set = data.loc[data['target'] != normal_class].values.tolist()
-        self.test_set.extend(test_data)
+        self.train_set = PRESSURE(data_path + '/train.csv')
+        self.test_set = PRESSURE(data_path + '/test.csv')
 
 
 class PRESSURE(Dataset):
-    def __init__(self, data_list, normal_class=1, transform=None, target_transform=None):
-        self.data = data_list
+    def __init__(self, data_path, transform=None, target_transform=None):
+        self.data = pd.read_csv(data_path).values.tolist()
         self.transform = transform
         self.target_transform = target_transform
 
