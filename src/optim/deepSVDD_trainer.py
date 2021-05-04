@@ -166,7 +166,7 @@ class DeepSVDDTrainer(BaseTrainer):
                 # get the inputs of the batch
                 inputs, _, _ = data
                 inputs = inputs.resize(20, 1, 400)
-                print(inputs.size())
+                # print(inputs.size())
                 inputs = inputs.to(self.device)
                 outputs = net(inputs)
                 n_samples += outputs.shape[0]
