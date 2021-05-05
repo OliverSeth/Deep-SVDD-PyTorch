@@ -51,7 +51,7 @@ class PRESSURE_LeNET(nn.Module):
         super(PRESSURE_LeNET, self).__init__()
         self.rep_dim = 1000
         self.pre = nn.Sequential(
-            nn.Conv1d(3, 64, 7, 2, 3, bias=False),
+            nn.Conv1d(1, 64, 7, 2, 3, bias=False),
             nn.BatchNorm1d(64),
             nn.ReLU(inplace=True),
             nn.MaxPool1d(3, 2, 1),
