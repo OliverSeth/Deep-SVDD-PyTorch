@@ -49,6 +49,7 @@ class ResidualBlock(nn.Module):
 class PRESSURE_LeNET(nn.Module):
     def __init__(self):
         super(PRESSURE_LeNET, self).__init__()
+        self.rep_dim = 1000
         self.pre = nn.Sequential(
             nn.Conv1d(3, 64, 7, 2, 3, bias=False),
             nn.BatchNorm1d(64),
